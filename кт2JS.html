@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    let r = true   
+    while (r == true)
+    {
+        let q = true;
+        let contin;
+        let y;
+        let task = prompt('Номер задания?')
+        if (task == 1)
+        {
+            while (q == true)
+            {           
+                let word = prompt("Enter a word:");
+                let lowerCaseWord = word.toLowerCase();
+                let res = ''
+                for (let i = 0; i < word.length; i++) {
+                    if (lowerCaseWord[i] === 'a' || lowerCaseWord[i] === 'o') continue;
+                    res += word[i]
+                }
+                console.log(res)
+                
+                y = prompt('Посмотрели все задания? y/n')
+                if ( y == 'y')
+                {
+                    r = false;
+                }
+                contin = prompt('Еще раз? любой символ/n')
+                if (contin == 'n')
+                {
+                    q = false;
+                }
+            }
+        }
+        
+        else if (task == 2)
+        {
+            while (q == true)
+            {   
+                let num = prompt("Enter a number:");
+                for (let i = 1; i <= num; i++) {
+                if (i % 3 === 0) {
+                        console.log(i);
+                    }
+                }
+
+                y = prompt('Посмотрели все задания? y/n')
+                if ( y == 'y')
+                {
+                    r = false;
+                }
+                contin = prompt('Продолжить? любой символ/n')
+                if (contin == 'n')
+                {
+                    q = false;
+                }
+            }
+        }
+
+        else if (task == 3)
+        {
+            while (q == true)
+            {                
+                let num = prompt("Enter a number:");
+                let res = '';
+                for (let i = 1; i <= num; i++) {
+                    for (let j = 1; j <= i; j++) {
+                        res += j;
+                    }
+                    res += '\n';
+                }
+                console.log(res)
+
+                y = prompt('Посмотрели все задания? y/n')
+                if ( y == 'y')
+                {
+                    r = false;
+                }
+                contin = prompt('Продолжить? любой символ/n')
+                if (contin == 'n')
+                {
+                    q = false;
+                }
+            }
+        }
+
+        else if (task == 4)
+        {
+            while (q == true)
+            {                
+                let num = prompt("Enter a number:");
+                let res = 1;
+                let res2 = 0;
+                for (let i = 1; i <= num; i++) {
+                    res *= i;
+                    res2 += res;
+                }
+                console.log(res2)
+
+                y = prompt('Посмотрели все задания? y/n')
+                if ( y == 'y')
+                {
+                    r = false;
+                }
+                contin = prompt('Продолжить? любой символ/n')
+                if (contin == 'n')
+                {
+                    q = false;
+                }
+            }
+        }
+
+        else if (task == 5)
+        {
+            while (q == true)
+            {                
+                let word = prompt('Write the word')
+                let res = 'yes'
+                for (let i = 0; i < (word.length - 1) / 2; i++) {
+                    if (word[i] !== word[word.length - i - 1]) {
+                        res = 'no'
+                    }
+                }
+                console.log(word, res)
+
+                y = prompt('Посмотрели все задания? y/n')
+                if ( y == 'y')
+                {
+                    r = false;
+                }
+                contin = prompt('Продолжить? любой символ/n')
+                if (contin == 'n')
+                {
+                    q = false;
+                }
+            }
+        }
+    }
+    </script>
+</body>
+</html>

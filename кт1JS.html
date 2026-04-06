@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KT1</title>
+</head>
+<body>
+    <script>
+        while (true)
+        {
+            let q = true;
+            let contin;
+            let task = prompt('Номер задания?')
+            if (task == 1) 
+            {
+                while (q == true)
+                {
+                    let price = prompt ('Введите зп');
+                    let range = prompt('Введите период (month/day/week)'); 
+                    let message = (range == 'month') ? price + 'P в месяц' : 
+                    (range == 'day') ? price + 'P в день' :
+                    (range == 'week') ? price + 'P в неделю' :
+                    'Вы ввели неверный период!';
+                    alert(message);
+                    contin = prompt('Продолжить? (любой символ/n)');
+                    if (contin == 'n')
+                    {
+                        q = false;
+                    }
+                }
+            }
+            else if (task == 2)
+            {
+                while (q == true)
+                {
+                    let temp = prompt('Введите температуру')
+                    let weather = prompt('Введите погоду (clear, cloudy, ...)')
+                    if (temp >= 25 && weather == 'clear') {
+                        alert('golf')
+                    }
+                    else if (10<temp<=24 || weather == 'cloudy'){
+                        alert('bowling')
+                    }
+                    else {
+                        alert('hiking')
+                    }    
+                    contin = prompt('Продолжить? (любой символ/n)');
+                    if (contin == 'n')
+                    {
+                        q = false;
+                    }
+                }
+            }
+            else if (task == 3)
+            {
+                while (q == true)
+                {
+                    let a = Number(prompt('Введите первое число'));
+                    let b = Number(prompt('Введите второе число'));
+                    let sign = prompt('Выберите знак (+, -, *, /)');
+                    if (sign=='+'){
+                        let result = a + b;
+                        alert(result);
+                    }
+                    else if (sign=='-'){
+                        let result = a - b;
+                        alert(result);
+                    }
+                    else if (sign=='*'){
+                        let result = a * b;
+                        alert(result);
+                    }
+                    else if (sign=='/'){
+                        if (b != 0)
+                        {
+                            let result = a + b;
+                            alert(result)
+                        }
+                        else 
+                        {
+                            alert('На ноль делить нельзя!')
+                        }
+                    }
+                    else {
+                        alert('Ошибка!');
+                    } 
+                    contin = prompt('Продолжить? (любой символ/n)');
+                    if (contin == 'n')
+                    {
+                        q = false;
+                    }
+                }
+            }
+            else if (task == 4)
+            {
+                while (q==true)
+                {
+                    let word = prompt('Введите слово');
+                    let message = (Math.sqrt((word.length))%1 == 0) ? '1':'0';
+                    alert(message);
+                    contin = prompt('Продолжить? (любой символ/n)');
+                    if (contin == 'n')
+                    {
+                        q = false;
+                    }
+                }
+            }
+            else 
+            {
+                alert('Такого задания нет!');
+            }
+        }
+    </script>
+</body>
+</html>
