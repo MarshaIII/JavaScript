@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    function RepeatTask(){
+        let contin = prompt('Еще раз? любой символ/n')
+        if (contin == 'n')
+        {
+            return false;
+        }
+        return true;
+    } 
+    function ContinueTasks(){
+        let y = prompt('Посмотрели все задания? y/любой символ')
+        if ( y == 'y')
+        {
+            return false;
+        }
+        return true;
+    }
+
+    let r = true 
+    while (r == true)
+    {
+        let q = true;
+        let task = prompt('Номер задания?')
+        if (task == 1)
+        {
+            while (q == true)
+            {           
+                let sum1 = 0 
+                let obj1 = { 
+                    price1: 100, 
+                    price2: 150, 
+                    price3: 200, 
+                    price4: 100,
+                    price5: 150, 
+                }
+                for (let value1 of Object.values(obj1)) {
+                    sum1 += Number(value1)
+                }
+                
+                alert (`Сумма ${sum1}`)
+                q = RepeatTask();
+            }
+            r = ContinueTasks();
+        }
+        
+        else if (task == 2)
+        {
+            while (q == true)
+            {           
+                
+                let array2 = [ 
+                    {id: 1, name: 'apple'}, 
+                    {id: 2, name: 'watermelon'}, 
+                    {id: 3, name: 'qiwi'}, 
+                    {id: 4, name: 'lemon'} 
+                ]
+                
+                for ( let i = 0; i < array2.length; i++ ){
+                    array2.splice(i, 1, `\n[${Object.values(array2[i])}]`)
+                }
+                alert(array2)
+                q = RepeatTask();
+            }
+            r = ContinueTasks();
+        }
+
+        else if (task == 3)
+        {
+            while (q == true)
+            {           
+                function logString(arr3){
+                    alert(`"${arr3.join(' ')}"`)
+                }
+
+                let arr3 = [];
+                let n3 = Number(prompt('Сколько параметров?', 3));
+                for (let i = 0; i < n3; i++) {
+                    let value3 = prompt('Параметр ' + (i+1) + ':');
+                    arr3[i] = String(value3);
+                }
+
+                logString(arr3)
+                q = RepeatTask();
+            }
+            r = ContinueTasks();
+        }
+
+        else if (task == 4)
+        {
+            while (q == true)
+            {           
+                function Checkobj(obj4){
+                    alert("particle" in obj4)
+                }
+                
+                let obj4 = {}
+                con4 = true
+                while (con4)
+                {
+                    let key4 = prompt('Введите ключ')
+                    let value4 = prompt('Введите значение для этого ключа')
+                    con4 = confirm('Еще раз?')
+                    obj4[key4] = value4
+                }
+                Checkobj(obj4)
+                q = RepeatTask();
+            }
+            r = ContinueTasks();
+        }
+
+        else if (task == 5)
+        {
+            while (q == true)
+            {           
+                function generateArray(array5){
+                    for (let i = 0; i < array5.length; i++){
+                        if (typeof array5[i] == 'object'){
+                            array5.splice(i, 1, Object.values(array5[i]))
+                        }
+                    }
+                    alert(array5)
+                }
+
+                let array5 = [[1], {id: 40}, [100], [300], {part: 10}]
+                generateArray(array5)
+                q = RepeatTask();
+            }
+            r = ContinueTasks();
+        }
+
+        else if (task == 6)
+        {
+            while (q == true)
+            {           
+                function AddUser(id, name, lastname, age){
+                    this.id = id
+                    this.name = name
+                    this.lastname = lastname
+                    this.age = age 
+                }
+
+                function updateUser(id, name, lastname, age){
+                    for ( let i = 0; i < users.length; i++){
+                        if (users[i].id == id){
+                            let user = new AddUser(id, name, lastname, age)
+                            users[i] = user
+                        }
+                    }
+                }
+                function deleteUser(id, users){
+                    for ( let i = 0; i < users.length; i++){
+                        if (users[i].id == id){
+                            let user = {id: id}
+                            users[i] = user
+                        }
+                    }
+                }
+                
+                let users = []
+                let o = true
+                while (o)
+                {
+                    let ask6 = Number(prompt("Что делаем?\n1. добавление пользователя\n2. изменение пользователя\n3. удаление пользователя\n4. больше ничего"))
+                    if (ask6 == 1){
+                        let name = prompt('Имя пользователя')
+                        let lastname = prompt('Фамилия пользователя')
+                        let age = Number(prompt('Возраст пользователя'))
+                        let user = new AddUser(users.length+1, name, lastname, age);
+                        users.push(user)
+                    }
+                    else if (ask6 == 2){
+                        let upid = prompt('Введите id пользователя, которого хотите изменить')
+                        let upname = prompt('Новое имя пользователя')
+                        let uplastname = prompt('Новая фамилия пользователя')
+                        let upage = Number(prompt('Новый возраст пользователя'))
+                        updateUser(upid, upname, uplastname, upage)
+                    }
+                    else if (ask6 == 3){
+                        let deletid = prompt('Введите id пользователя, которого хотите удалить')
+                        deleteUser(deletid, users)
+                    }
+                    else if (ask6 == 4) {
+                        o = false
+                        break
+                    }
+                    for (user of users){
+                        if (typeof user == 'object'){
+                            if ('name' in user == false){
+                                alert(`Пользватель с id: ${user.id} -- удален`)
+                            }
+                            else{
+                                alert(`[id: ${user.id}, name: ${user.name}, lastname: ${user.lastname}, age: ${user.age}]`)
+                            }
+                        }
+                        else {
+                            alert(user)
+                        }
+                    }
+                }
+                q = RepeatTask();
+            }
+            r = ContinueTasks();
+        }
+
+        else if (task == 7)
+        {
+            while (q == true)
+            {           
+                let products = [
+                    {
+                        id: 1,
+                        title: 'велосипед',
+                        price: 45000,
+                        count: 3, 
+                        marks: [4, 3, 5, 3] 
+                    },
+                    {
+                        id: 2,
+                        title: 'ролики',
+                        price: 25000,
+                        count: 5,
+                        marks: [4, 3, 5, 5]
+                    },
+                    {
+                        id: 3,
+                        title: 'арбалет',
+                        price: 1700,
+                        count: 9,
+                        marks: [3, 3, 4, 5]
+                    },
+                    {
+                        id: 4,
+                        title: 'коньки',
+                        price: 4500,
+                        count: 3,
+                        marks: [4, 3, 4, 3]
+                    },
+                    {
+                        id: 5,
+                        title: 'ракетки',
+                        price: 900,
+                        count: 15,
+                        marks: [5, 3, 5, 3]
+                    },
+                    {
+                        id: 6,
+                        title: 'штанги',
+                        price: 14000,
+                        count: 5,
+                        marks: [3, 3, 3, 2]
+                    },
+                    {
+                        id: 7,
+                        title: 'стрелы',
+                        price: 1200,
+                        count: 55,
+                        marks: [3, 2, 4, 5]
+                    },
+                    {
+                        id: 8,
+                        title: 'мячи',
+                        price: 500,
+                        count: 49,
+                        marks: [5, 4, 4, 4]
+                    },
+                    {
+                        id: 9,
+                        title: 'сетка',
+                        price: 5000,
+                        count: 6,
+                        marks: [4, 5, 2, 5]
+                    },
+                    {
+                        id: 10,
+                        title: 'гантели',
+                        price: 3400,
+                        count: 12,
+                        marks: [3, 2, 4, 2]
+                    },
+                    {
+                        id: 11,
+                        title: 'маты',
+                        price: 16500,
+                        count: 7,
+                        marks: [4, 4, 4, 5]
+                    }
+                ]
+
+                let ask7 = Number(prompt("Введите номер задачи\n1-5\n6 => выход"))
+                if (ask7 == 1){
+                    let re7 = []
+                    products.map(product =>  product.count > 10 ? re7.push(product.title) : '' );
+                    alert(re7)
+                }
+                else if (ask7 == 2){
+                    let res7 = products.find(product => product.price >= 800 && product.price <= 900);
+                    alert(Object.entries(res7).map(([key, value]) => `${key}: ${value}`).join('\n') )
+                    
+                }
+                else if (ask7 == 3){
+                    products.sort((a, b) => b.price - a.price);
+                    alert(products.map(p => `${p.title}: ${p.price}`).join('\n'));
+                }
+                else if (ask7 == 4) {
+                    let sum = 0
+                    products.forEach((product) => {sum +=(Number(product.count)*Number(product.price))})
+                    alert(sum)
+                }
+                else if (ask7 == 5) {
+                    let productscopy = products.map(product => { let sum = 0 ; product.marks.forEach(element => { sum += element}); delete(product.marks); product.marks_total = sum; return product;;});
+                    productscopy.sort((a, b) => b.marks_total - a.marks_total);
+                    alert(productscopy.map(p => `${p.title}: ${p.marks_total}`).join('\n'));
+                }
+                q = RepeatTask();
+            }
+            r = ContinueTasks();
+        }
+        
+        else if (task == 8)
+        {
+            while (q == true)
+            {           
+                class Email{
+                    constructor (email){
+                        this.email = email
+                    }
+
+                    get email(){
+                        return this._email
+                    }
+
+                    set email(email){
+                        if (email == null)
+                        {
+                            alert('Вы ничего не ввели')
+                        }
+                        else 
+                        {
+                            if ((email.split('')).includes('@', 0) && email.endsWith('.com')){
+                                this._email = email
+                            }
+                            else{
+                                alert('Это не является почтой')
+                                return
+                            }
+                        }
+                    }
+                }
+                let you = new Email(prompt('Введите свою почту'))
+                if (typeof you.email === 'undefined') {alert('Почта не заполнена')}
+                else {alert(you.email)}
+                q = RepeatTask();
+            }
+            r = ContinueTasks();
+        }
+
+        else if (task == 9)
+        {
+            while (q == true)
+            {           
+                class Email{
+                    constructor (email){
+                        this.email = email
+                    }
+
+                    get email(){
+                        return this._email
+                    }
+
+                    set email(email){
+                        if (email == null)
+                        {
+                            alert('Вы не ввели почту')
+                        }
+                        else 
+                        {
+                            if ((email.split('')).includes('@', 0) && email.endsWith('.com')){
+                                this._email = email
+                            }
+                            else{
+                                alert('Это не является почтой')
+                                return
+                            }
+                        }
+                    }
+                }
+                class Contact extends Email{
+                    constructor(phone, email){
+                        super(email)
+                        this.phone = phone
+                    }
+
+                    get phone(){
+                        if (typeof this._phone !== 'undefined'){
+                            let phonenumb = this._phone.split('');
+                            if (phonenumb[0] != '+'){
+                                alert('Ваш номер - неизвестный')
+                                return this._phone;
+                            }
+                            else{
+                                if (phonenumb.length-1 == 12){
+                                    alert('Ваш телефон - мобильный')
+                                    return this._phone;
+                                }
+                                else if( phonenumb.length-1 == 18){
+                                    alert('Ваш телефон - городской')
+                                    return this._phone;
+                                }   
+                            }  
+                        }
+                        else {
+                            return this._phone
+                        }    
+                    }
+                    set phone(phone){
+                        if (phone == null || (phone.length-1 != 12 && phone.length-1 != 18))
+                        {
+                            alert('Это не является номером телефона')
+                            return
+                        }
+                        else {
+                            for (let char of phone){
+                                if (isNaN(char) && char != '+'){
+                                    alert('Это не является номером телефона')
+                                    return
+                                }
+                                else {
+                                    this._phone = phone
+                                }
+                            }
+                        }                    
+                    }    
+                }
+                let you = new Contact(String(prompt('Введите свой телефон. Либо 12, либо 18 цифр')), String(prompt('Введите свой имэйл. Должно включать "@" и оканчиваться на ".com"')))
+                let yourphone = you.phone
+                let youremail = you.email
+                if (typeof yourphone === 'undefined') {alert('Телефон не заполнен')}
+                else {alert(`Ваш номер: ${yourphone}`)}
+                if (typeof youremail === 'undefined') {alert('Почта не заполнена')}
+                else {alert(`Ваша почта: ${youremail}`)}
+                q = RepeatTask();
+            }
+            r = ContinueTasks();
+        }
+    }
+    </script>
+</body>
+</html>
